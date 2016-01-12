@@ -11,6 +11,16 @@ def index():
 
 @app.route('/echo', methods=['POST'])
 def echo():
+    """
+    receives a json with the following format
+
+        {'file' : <file> ,
+         'network_info' : <network_info>,
+         'speed_test' : <speed_test>}
+
+    :return: same json that was sent
+    """
+
     data_file = request.json.get('file')
     data_net_info = request.json.get('network_info')
     data_speed_test = request.json.get('speed_test')
