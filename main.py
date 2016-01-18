@@ -12,23 +12,12 @@ def index():
 @app.route('/echo', methods=['POST'])
 def echo():
     """
-    receives a json with the following format
-
-        {'file' : <file> ,
-         'network_info' : <network_info>,
-         'speed_test' : <speed_test>}
+    receive data and sent it back
 
     :return: same json that was sent
     """
-
-    data_file = request.json.get('file')
-    data_net_info = request.json.get('network_info')
-    data_speed_test = request.json.get('speed_test')
-
-    return jsonify({'file': data_file,
-                    'network_info': data_net_info,
-                    'speed_test': data_speed_test})
+    return request.data
 
 if __name__ == '__main__':
     app.debug = True
-    app.run()
+    app.run(host='0.0.0.0')
